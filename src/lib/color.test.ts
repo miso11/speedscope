@@ -1,4 +1,4 @@
-import {Color} from './color'
+import { Color } from './color'
 
 describe('Color', () => {
   test('fromLumaChromaHue', () => {
@@ -25,5 +25,6 @@ describe('Color', () => {
     expect(new Color(0, 1, 0, 1).toCSS()).toEqual('rgba(0, 255, 0, 1.00)')
     expect(new Color(0, 0, 1, 1).toCSS()).toEqual('rgba(0, 0, 255, 1.00)')
     expect(new Color(0, 0, 1, 0.599).toCSS()).toEqual('rgba(0, 0, 255, 0.60)')
+    expect(new Color(0, 0.5, 0.918, 0.22).toCSS()).toEqual('rgba(0, 128, 234, 0.22)')
   })
 })

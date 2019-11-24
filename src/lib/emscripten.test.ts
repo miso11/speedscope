@@ -1,4 +1,4 @@
-import {importEmscriptenSymbolMap} from './emscripten'
+import { importEmscriptenSymbolMap } from './emscripten'
 
 test('importEmscriptenSymbolMap', () => {
   // Valid symbol map
@@ -88,4 +88,7 @@ test('importEmscriptenSymbolMap', () => {
   // Unrelated files
   expect(importEmscriptenSymbolMap('')).toEqual(null)
   expect(importEmscriptenSymbolMap('\n')).toEqual(null)
+})
+test('unescape Hex', () => {
+  expect(unescape('32')).toBe('32') //not working function unescape
 })

@@ -1,14 +1,14 @@
-import {storeTest, profileGroupTwoSampled} from './store-test-utils'
-import {actions} from './actions'
-import {Rect, Vec2} from '../lib/math'
-import {FlamechartID} from './flamechart-view-state'
-import {ViewMode} from '.'
+import { storeTest, profileGroupTwoSampled } from './store-test-utils'
+import { actions } from './actions'
+import { Rect, Vec2 } from '../lib/math'
+import { FlamechartID } from './flamechart-view-state'
+import { ViewMode } from '.'
 
 describe('flamechart view state', () => {
-  storeTest('setHoveredNode', ({getState, dispatch}) => {
+  storeTest('setHoveredNode', ({ getState, dispatch }) => {
     dispatch(actions.setProfileGroup(profileGroupTwoSampled))
     expect(getState().profileGroup!.profiles[0].chronoViewState.hover).toEqual(null)
-    const {profileGroup} = getState()
+    const { profileGroup } = getState()
     const hover = {
       node: profileGroup!.profiles[0].profile.getAppendOrderCalltreeRoot().children[0],
       event: {} as MouseEvent,
@@ -31,10 +31,10 @@ describe('flamechart view state', () => {
     expect(getState().profileGroup!.profiles[0].chronoViewState.hover).toEqual(null)
   })
 
-  storeTest('setSelectedNode', ({getState, dispatch}) => {
+  storeTest('setSelectedNode', ({ getState, dispatch }) => {
     dispatch(actions.setProfileGroup(profileGroupTwoSampled))
     expect(getState().profileGroup!.profiles[0].chronoViewState.selectedNode).toEqual(null)
-    const {profileGroup} = getState()
+    const { profileGroup } = getState()
     const selectedNode = profileGroup!.profiles[0].profile.getAppendOrderCalltreeRoot().children[0]
     dispatch(
       actions.flamechart.setSelectedNode({
@@ -50,7 +50,7 @@ describe('flamechart view state', () => {
     expect(getState().profileGroup!.profiles[1].chronoViewState.selectedNode).toEqual(null)
   })
 
-  storeTest('setLogicalSpaceViewportSize', ({getState, dispatch}) => {
+  storeTest('setLogicalSpaceViewportSize', ({ getState, dispatch }) => {
     dispatch(actions.setProfileGroup(profileGroupTwoSampled))
     expect(getState().profileGroup!.profiles[0].chronoViewState.logicalSpaceViewportSize).toEqual(
       Vec2.zero,
@@ -77,7 +77,7 @@ describe('flamechart view state', () => {
     )
   })
 
-  storeTest('setConfigSpaceViewportRect', ({getState, dispatch}) => {
+  storeTest('setConfigSpaceViewportRect', ({ getState, dispatch }) => {
     dispatch(actions.setProfileGroup(profileGroupTwoSampled))
     expect(getState().profileGroup!.profiles[0].chronoViewState.configSpaceViewportRect).toEqual(
       Rect.empty,
@@ -101,5 +101,8 @@ describe('flamechart view state', () => {
     expect(getState().profileGroup!.profiles[1].chronoViewState.configSpaceViewportRect).toEqual(
       Rect.empty,
     )
+  })
+  test('createFlamechartView', () => {
+    expect(createFlamechartViewStateReducer(FlamechartID.LEFT_HEAVY, 5)).toBeDefined()
   })
 })

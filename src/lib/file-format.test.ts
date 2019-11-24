@@ -13,7 +13,7 @@ describe('importSpeedscopeProfiles', async () => {
     await checkProfileSnapshot('./sample/profiles/speedscope/0.6.0/two-sampled.speedscope.json')
   })
 
-  test('0.6.5 multiple profiles STUB TEST', async () => { //STUB method
+  test('0.6.5 multiple profiles mock', async () => { //MOCK method
     const abc = './sample/profiles/speedscope/0.6.5/two-sampled.speedscope.json'
     await checkProfileSnapshot(abc)
   })
